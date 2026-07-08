@@ -1,21 +1,55 @@
-MIT License
+================================================================================
+GSP (Garrysmod Sound Player) - END USER LICENSE AGREEMENT (EULA)
+Copyright (c) 2026 Blitzpl. All rights reserved.
+================================================================================
 
-Copyright (c) 2026 Patryk Wróblewski
+Please read this End User License Agreement ("Agreement") carefully 
+(Garrysmod Sound Player) ("Software").
 
-Permission is hereby granted, free of charge, to any person obtaining a copy
-of this software and associated documentation files (the "Software"), to deal
-in the Software without restriction, including without limitation the rights
-to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
-copies of the Software, and to permit persons to whom the Software is
-furnished to do so, subject to the following conditions:
+By downloading, installing, or using the Software, you are agreeing to be 
+bound by the terms and conditions of this Agreement.
 
-The above copyright notice and this permission notice shall be included in all
-copies or substantial portions of the Software.
+1. LICENSE GRANT
+The Author grants you a personal, non-exclusive, non-transferable, revocable 
+license to download, install, and run the Software 
+use on your Garry's Mod game client or on your dedicated 
+Garry's Mod game server.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
-IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
-FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
-AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
-LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
-OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
-SOFTWARE.
+2. PROHIBITED USES (RESTRICTIONS)
+You strictly agree NOT to, and you shall not permit others to:
+- Copy, redistribute, publish, or sublicense the Software, its source code, 
+  user interface (UI), graphics, or assets in any form.
+- Modify, adapt, translate, decompile, reverse engineer, disassemble, or 
+  create derivative works based on the Software or its source code.
+- Re-upload, re-publish, or repackage the Software (modified or unmodified) 
+  to the Steam Workshop, GitHub, GmodStore, or any other third-party 
+  distribution platform without prior written consent from the Author.
+- Sell, rent, lease, or use the Software for direct commercial profit (excluding 
+  standard Garry's Mod server monetization such as donation ranks/VIP perks, 
+  provided that the Software itself is not being sold).
+
+3. OWNERSHIP AND INTELLECTUAL PROPERTY
+The Author retains all right, title, and interest in and to the Software, 
+including all copyrights, patents, trademarks, source code (Lua, JavaScript, 
+React), user interface designs, and other intellectual property rights. 
+No ownership rights are transferred to you by this Agreement.
+
+4. DISCLAIMER OF WARRANTY
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR 
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, 
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE 
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER 
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, 
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN 
+THE SOFTWARE.
+
+5. TERMINATION
+This Agreement and the license granted hereunder shall terminate automatically 
+without notice from the Author if you fail to comply with any terms of this 
+Agreement. Upon termination, you must immediately cease all use of the Software 
+and remove all copies of it from your client and/or server.
+
+================================================================================
+Blitzpl
+Contact: https://steamcommunity.com/profiles/76561198073601931/
+================================================================================
