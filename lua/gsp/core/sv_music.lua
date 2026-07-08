@@ -10,6 +10,32 @@ for _, n in ipairs(nets) do util.AddNetworkString(n) end
 
 local MAX_QUEUE_SIZE = 100
 local MAX_STRING_LENGTH = 1024
+local SPAM_DECAY_RATE = 15  
+local SPAM_MAX_BURST = 40   
+local SPAM_WARN_COOLDOWN = 3 
+
+function GSP.CheckRateLimit(ply, weight)
+    if not IsValid(ply) then return false end
+
+    ply.GSP_SpamScore = ply.GSP_SpamScore or 0
+    ply.GSP_LastSpamUpdate = ply.GSP_LastSpamUpdate or CurTime()
+    ply.GSP_LastSpamWarn = ply.GSP_LastSpamWarn or 0
+
+    local timePassed = CurTime() - ply.GSP_LastSpamUpdate
+    ply.GSP_SpamScore = math.max(0, ply.GSP_SpamScore - (timePassed * SPAM_DECAY_RATE))
+    ply.GSP_LastSpamUpdate = CurTime()
+
+    ply.GSP_SpamScore = ply.GSP_SpamScore + (weight or 1)
+
+    if ply.GSP_SpamScore > SPAM_MAX_BURST then
+        if CurTime() - ply.GSP_LastSpamWarn > SPAM_WARN_COOLDOWN then
+            ply.GSP_LastSpamWarn = CurTime()
+        end
+        return false
+    end
+
+    return true
+end
 
 local function SanitizeSongName(songName)
     if not songName or type(songName) ~= "string" then return "" end
@@ -96,6 +122,7 @@ end
 
 net.Receive("GSP_SetLength", function(len, ply)
     if not GSP.HasMusicPermission(ply) then return end
+    if not GSP.CheckRateLimit(ply, 2) then return end
     if not GSP.CurrentSong then return end
     if GSP.SongDuration and GSP.SongDuration > 0 then return end
     local length = net.ReadFloat()
@@ -107,7 +134,7 @@ end)
 
 net.Receive("GSP_QueueAdd", function(len, ply)
     if not GSP.HasMusicPermission(ply) then return end
-
+    if not GSP.CheckRateLimit(ply, 4) then return end
     local songName = net.ReadString()
     local sanitized = SanitizeSongName(songName)
     if sanitized == "" then return end
@@ -125,24 +152,28 @@ end)
 
 net.Receive("GSP_NextTrack", function(len, ply)
     if not GSP.HasMusicPermission(ply) then return end
+    if not GSP.CheckRateLimit(ply, 5) then return end
     local quickSong = net.ReadString()
     if quickSong and quickSong ~= "" then GSP.PlayTrack(quickSong) else GSP.SkipTrack() end
 end)
 
 net.Receive("GSP_SetVolume", function(len, ply)
     if not GSP.HasMusicPermission(ply) then return end
+    if not GSP.CheckRateLimit(ply, 2) then return end
     GSP.GlobalVolume = math.Clamp(net.ReadFloat(), 0, 1)
     GSP.BroadcastState()
 end)
 
 net.Receive("GSP_SetLooping", function(len, ply)
     if not GSP.HasMusicPermission(ply) then return end
+    if not GSP.CheckRateLimit(ply, 3) then return end
     GSP.IsLooping = net.ReadBool()
     GSP.BroadcastState()
 end)
 
 net.Receive("GSP_TogglePause", function(len, ply)
     if not GSP.HasMusicPermission(ply) then return end
+    if not GSP.CheckRateLimit(ply, 4) then return end
     if not GSP.CurrentSong then return end
     GSP.IsPaused = not GSP.IsPaused
     if GSP.IsPaused then GSP.PauseTime = CurTime() timer.Pause("GSP_TrackTimer")
@@ -152,6 +183,7 @@ end)
 
 net.Receive("GSP_Seek", function(len, ply)
     if not GSP.HasMusicPermission(ply) then return end
+    if not GSP.CheckRateLimit(ply, 4) then return end
     if not GSP.CurrentSong then return end
     
     local newTime = net.ReadFloat()
@@ -174,13 +206,14 @@ end)
 
 net.Receive("GSP_Stop", function(len, ply)
     if not GSP.HasMusicPermission(ply) then return end
+    if not GSP.CheckRateLimit(ply, 5) then return end
     GSP.CurrentSong = nil; timer.Remove("GSP_TrackTimer")
     net.Start("GSP_Stop") net.Broadcast()
 end)
 
 net.Receive("GSP_Play", function(len, ply)
     if not GSP.HasMusicPermission(ply) then return end
-
+    if not GSP.CheckRateLimit(ply, 5) then return end
     local songName = net.ReadString()
     local sanitized = SanitizeSongName(songName)
     if sanitized == "" then return end
@@ -190,7 +223,7 @@ end)
 
 net.Receive("GSP_UpdateQueue", function(len, ply)
     if not GSP.HasMusicPermission(ply) then return end
-
+    if not GSP.CheckRateLimit(ply, 6) then return end
     local rawQueue = net.ReadTable()
     if type(rawQueue) ~= "table" then return end
 
