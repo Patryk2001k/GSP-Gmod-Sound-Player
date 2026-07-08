@@ -48,9 +48,9 @@ If a server admin or DJ starts a global track, any player can instantly mute tha
 
 You can easily package and upload your own custom music packs to the Steam Workshop for your server. To help developers get started, refer to our official resources:
 
-* **[GSP: Official Music Template (Content Pack Base)](#)** - *Official, pre-structured template pack.*
-* **[Beginner Friendly Guide](#)** - *Explains folder setups, GMod naming rules, and how to use batch renaming scripts.*
-* **[Advanced Tech Guide](#)** - *Technical reference sheet for experienced server technicians.*
+* **[GSP: Official Music Template (Content Pack Base)](https://steamcommunity.com/sharedfiles/filedetails/?id=3751630070)** - *Official, pre-structured template pack.*
+* **[Beginner Friendly Guide](https://steamcommunity.com/sharedfiles/filedetails/?id=3749282153)** - *Explains folder setups, GMod naming rules, and how to use batch renaming scripts.*
+* **[Advanced Tech Guide](https://steamcommunity.com/sharedfiles/filedetails/?id=3749273478)** - *Technical reference sheet for experienced server technicians.*
 
 *(Note: Please replace the `#` links above with your actual guide URLs if hosted externally).*
 
